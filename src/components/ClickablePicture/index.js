@@ -3,7 +3,7 @@ export function ClickablePicture(props) {
   return (
     <>
       <div>
-        <img src={props.src} onClick={props.onClickFunction} alt="image" />
+        <img src={props.src} onClick={props.onClickFunction} alt="#" />
       </div>
     </>
   );

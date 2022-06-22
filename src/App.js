@@ -9,17 +9,37 @@ import { LikeButton } from './components/LikeButton';
 import { ClickablePicture } from './components/ClickablePicture';
 import { useState } from 'react';
 import { Dice } from './components/Dice';
+import { Carousel } from './components/Carousel';
+
+import Dice0 from './assets/images/dice-empty.png';
+import Dice1 from './assets/images/dice1.png';
+import Dice2 from './assets/images/dice2.png';
+import Dice3 from './assets/images/dice3.png';
+import Dice4 from './assets/images/dice4.png';
+import Dice5 from './assets/images/dice5.png';
+import Dice6 from './assets/images/dice6.png';
 
 import img from './assets/images/maxence.png';
 
 import imgClicked from './assets/images/maxence-glasses.png';
-import react from 'react';
+// import react from 'react';
 
 function App() {
   const [src, setImgClick] = useState(img);
 
   function imgClick() {
     src === img ? setImgClick(imgClicked) : setImgClick(img);
+  }
+
+  //Dice
+  const diceList = [Dice1, Dice2, Dice3, Dice4, Dice5, Dice6];
+  const [dice, setDice] = useState(Dice0);
+
+  function rollDice() {
+    setDice(Dice0);
+    setTimeout(() => {
+      setDice(diceList[Math.floor(Math.random() * diceList.length)]);
+    }, 1000);
   }
 
   return (
@@ -131,7 +151,17 @@ function App() {
         />
       </div>
       <div>
-        <Dice />
+        <Dice src={dice} theFunction={rollDice} />
+      </div>
+      <div>
+        <Carousel
+          images={[
+            'https://randomuser.me/api/portraits/women/1.jpg',
+            'https://randomuser.me/api/portraits/men/1.jpg',
+            'https://randomuser.me/api/portraits/women/2.jpg',
+            'https://randomuser.me/api/portraits/men/2.jpg',
+          ]}
+        />
       </div>
     </div>
   );

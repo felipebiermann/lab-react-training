@@ -1,3 +1,12 @@
 export function Dice(props) {
-  return <div></div>;
+  return (
+    <>
+      <img
+        width={'120px'}
+        src={props.src}
+        onClick={props.theFunction}
+        alt="dice"
+      />
+    </>
+  );
 }
