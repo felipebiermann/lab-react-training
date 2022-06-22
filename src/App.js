@@ -5,8 +5,23 @@ import { BoxColor } from './components/BoxColor';
 import { CreditCard } from './components/CreditCard';
 import { Rating } from './components/Rating';
 import { DriverCard } from './components/DriverCard';
+import { LikeButton } from './components/LikeButton';
+import { ClickablePicture } from './components/ClickablePicture';
+import { useState } from 'react';
+import { Dice } from './components/Dice';
+
+import img from './assets/images/maxence.png';
+
+import imgClicked from './assets/images/maxence-glasses.png';
+import react from 'react';
 
 function App() {
+  const [src, setImgClick] = useState(img);
+
+  function imgClick() {
+    src === img ? setImgClick(imgClicked) : setImgClick(img);
+  }
+
   return (
     <div className="App">
       <IdCard
@@ -104,6 +119,19 @@ function App() {
             licensePlate: 'BE33ER',
           }}
         />
+      </div>
+      <div>
+        <LikeButton />
+      </div>
+      <div>
+        <ClickablePicture
+          src={src}
+          // imgClicked={imgClicked}
+          onClickFunction={imgClick}
+        />
+      </div>
+      <div>
+        <Dice />
       </div>
     </div>
   );
